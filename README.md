@@ -4,7 +4,8 @@
 </div>
 
 ## Roadmap
-- [ ] Parse the configuration file. (For `v0.0.0`)
+- [x] Parse the configuration file. (For `v0.0.0`)
+- [ ] `config.Layout`: Add a method to verify that the license is correct. (For `v0.0.0`)
 
 ## [License](LICENSE)
 Under the BSD 3-Clause license.
