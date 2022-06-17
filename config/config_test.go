@@ -4,7 +4,7 @@ import(
 	"testing"
 )
 
-func TestLayoutLoad(t *testing.T) {
+func TestLayoutLoadFrom(t *testing.T) {
 	expected := []interface{}{
 		"Test",
 		"0.0.0",
@@ -13,7 +13,7 @@ func TestLayoutLoad(t *testing.T) {
 
 	var data Layout
 
-	err := data.Load("../testdata/testLayout.json")
+	err := data.LoadFrom("../testdata/testLayout.json")
 
 	if err != nil {
 		t.Fatalf("config.Layout.Load(): %v", err)

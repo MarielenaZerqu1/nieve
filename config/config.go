@@ -19,7 +19,7 @@ type Layout struct {
 }
 
 // Load options from a JSON file.
-func (lay *Layout) Load(file string) error {
+func (lay *Layout) LoadFrom(file string) error {
 	absFilePath, err := filepath.Abs(file)
 
 	if err != nil {
@@ -34,10 +34,7 @@ func (lay *Layout) Load(file string) error {
 		return err
 	}
 
-	var decoder = json.NewDecoder(bytes.NewReader(fileContent))
-	decoder.DisallowUnknownFields()
-
-	if err = decoder.Decode(lay); err != nil {
+	if err = Load(fileContent, lay); err != nil {
 		return err
 	}
 
@@ -45,6 +42,18 @@ func (lay *Layout) Load(file string) error {
 	if idOk, err = spdx.Validate(lay.License); !idOk && err == nil {
 		return errors.ErrInvalidSPDXLicenseId
 	} else {
+		return err
+	}
+
+	return nil
+}
+
+// Load the given data to the given layout.
+func Load(data []byte, lay *Layout) error {
+	var decoder = json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+
+	if err := decoder.Decode(lay); err != nil {
 		return err
 	}
 
