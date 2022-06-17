@@ -5,6 +5,9 @@ import(
 	"path/filepath"
 	"bytes"
 	"io/ioutil"
+
+	"github.com/dilmorja/nieve/spdx"
+	"github.com/dilmorja/nieve/internal/errors"
 )
 
 // The Layout are the configuration options.
@@ -34,5 +37,16 @@ func (lay *Layout) Load(file string) error {
 	var decoder = json.NewDecoder(bytes.NewReader(fileContent))
 	decoder.DisallowUnknownFields()
 
-	return decoder.Decode(lay)
+	if err = decoder.Decode(lay); err != nil {
+		return err
+	}
+
+	var idOk bool
+	if idOk, err = spdx.Validate(lay.License); !idOk && err == nil {
+		return errors.ErrInvalidSPDXLicenseId
+	} else {
+		return err
+	}
+
+	return nil
 }
