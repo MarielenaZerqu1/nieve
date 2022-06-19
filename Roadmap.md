@@ -1,12 +1,11 @@
 # Roadmap
 
-## General
-- [x] Parse the configuration file. (For `v0.0.0`)
-
 ## CLI
 - [ ] Init a package. (For `v0.0.0`)
 
 ## config
+- [x] Parse the configuration file. (For `v0.0.0`)
+
 ### Layout
 - [x] Add a method to verify that the license is correct. (For `v0.0.0`)
 - [x] Add more config options. (For `v0.0.0`)
