@@ -1,5 +1,7 @@
 {
     "name": "Test",
+    "description": "A layout test",
+    "owner": "The Nieve Authors",
     "version": "0.0.0",
     "license": "BSD-3-Clause"
 }

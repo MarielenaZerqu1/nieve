@@ -14,6 +14,8 @@ import(
 // From here you can access the values of these options.
 type Layout struct {
 	Name string `json:"name"`
+	Description string `json:"description,omitempty"`
+	Owner string `json:"owner"`
 	Version string `json:"version"`
 	License string `json:"license"`
 }

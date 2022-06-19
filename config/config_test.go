@@ -7,6 +7,8 @@ import(
 func TestLayoutLoadFrom(t *testing.T) {
 	expected := []interface{}{
 		"Test",
+		"A layout test",
+		"The Nieve Authors",
 		"0.0.0",
 		"BSD-3-Clause",
 	}
@@ -21,6 +23,8 @@ func TestLayoutLoadFrom(t *testing.T) {
 
 	got := []interface{}{
 		data.Name,
+		data.Description,
+		data.Owner,
 		data.Version,
 		data.License,
 	}
