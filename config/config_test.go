@@ -35,3 +35,17 @@ func TestLayoutLoadFrom(t *testing.T) {
 		}
 	}
 }
+
+func TestLayoutLoad(t *testing.T) {
+	expected := "LT"
+
+	var got Layout
+
+	if err := Load([]byte(`{"name": "LT"}`), &got); err != nil {
+		t.Errorf("config.Load(): %v", err)
+	}
+
+	if expected != got.Name {
+		t.Errorf("\nExpected: %s\nGot: %s\n", expected, got.Name)
+	}
+}
