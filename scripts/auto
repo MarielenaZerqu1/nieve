@@ -1,0 +1,19 @@
+#!/usr/bin/python
+
+import sys, subprocess, platform
+
+PYOS = platform.system()
+GO_TESTFLAGS = ["-v", "-cover"]
+
+def runPlatformIndependent():
+    go_test_args = ["go", "test", "./..."]
+    for flag in GO_TESTFLAGS:
+        go_test_args.insert(2, flag)
+    
+    subprocess.call(go_test_args)
+
+PLATFORMS = ["Windows", "Linux", "Darwin"]
+
+for p in PLATFORMS:
+    if PYOS == p:
+        runPlatformIndependent()
